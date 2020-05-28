@@ -3,10 +3,9 @@ package;
 import kha.Scheduler;
 import kha.Framebuffer;
 
-@:nullSafety
 class App {
 
-	@:nullSafety(Off) public static var mesh:Mesh;
+	public static var mesh:Mesh;
 
 	var deltaTime:Float = 0.0;
 	var totalFrames:Int = 0;
