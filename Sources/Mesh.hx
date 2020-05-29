@@ -75,7 +75,7 @@ class Mesh {
 	public var objectAlbedo: FastVector3 = new FastVector3(1.0, 0.5, 0.3);
 	public var objectAmbientOcclusion: FastFloat = 0.2;
 
-	public var lightColor = new FastVector3(100, 100, 100);
+	public var lightColor = new FastVector3(1, 1, 1);
 
 	public var cameraContoller: CameraController;
 
