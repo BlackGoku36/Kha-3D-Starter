@@ -99,7 +99,7 @@ class Mesh {
 		pipeline.depthWrite = true;
 		pipeline.depthMode = CompareMode.Less;
 
-		pipeline.cullMode = CullMode.None;
+		pipeline.cullMode = CullMode.Clockwise;
 		pipeline.compile();
 
 		mvpID = pipeline.getConstantLocation("MVP");
