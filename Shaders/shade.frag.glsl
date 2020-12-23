@@ -6,7 +6,7 @@ in vec3 normal;
 in vec3 fragPos;
 
 uniform vec3 objectAlbedo;
-uniform float objectAO;
+uniform float objectAmbientValue;
 
 uniform vec3 lightPosition;
 uniform vec3 lightColor;
@@ -18,7 +18,7 @@ void main(){
     vec3 L = normalize(lightPosition-fragPos);
     float diff = max(dot(N, L), 0.0);
     vec3 diffuse = diff * lightColor;
-    vec3 color = (objectAO + diffuse) * objectAlbedo;
+    vec3 color = (objectAmbientValue + diffuse) * objectAlbedo;
    
     fragColor = vec4(color, 1.0);
 }  

@@ -58,9 +58,6 @@ class Mouse {
     
     var mouseX = 0.0;
     var mouseY = 0.0;
-    
-    public var mouseDeltaX:Float;
-	public var mouseDeltaY:Float;
 
 	public function new() {
 		kha.input.Mouse.get().notify(downListener, upListener, moveListner, wheelListener);
@@ -122,18 +119,23 @@ class Mouse {
 		this.y = y;
 	}
 
-	function moveListner(x: Int, y: Int, movementX: Int, movementY: Int): Void{
-    	mouseDeltaX = x - mouseX;
-        mouseDeltaY = y - mouseY;
+    function moveListner(x: Int, y: Int, movementX: Int, movementY: Int): Void{
+        if (lastX == -1.0 && lastY == -1.0){
+            lastX = x;
+            lastY = y;
+		}
 
-    	mouseX = x;
-        mouseY = y;
-        
+        this.movementX = movementX;
+        this.movementY = movementY;
+
+        lastX = x;
+        lastY = y;
+
         this.x = x;
         this.y = y;
 
-		moved = true;
-	}
+        moved = true;
+    }
 
 	function wheelListener(delta: Int){
 		wheelDelta = delta;

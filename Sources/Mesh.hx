@@ -27,7 +27,7 @@ class Mesh {
 	var lightColorC:ConstantLocation;
 
 	var objectAlbedoC:ConstantLocation;
-	var objectAmbientOcclusionC:ConstantLocation;
+	var objectAmbientValueC:ConstantLocation;
 
 	static var vertices:Array<Float> = [
 		-1.0,-1.0,-1.0,
@@ -73,7 +73,7 @@ class Mesh {
 	public var lightPosition: FastVector3 = new FastVector3(1.0, 17.7, 1.0);
 
 	public var objectAlbedo: FastVector3 = new FastVector3(1.0, 0.5, 0.3);
-	public var objectAmbientOcclusion: FastFloat = 0.2;
+	public var objectAmbientValue: FastFloat = 0.2;
 
 	public var lightColor = new FastVector3(1, 1, 1);
 
@@ -106,7 +106,7 @@ class Mesh {
 		modelMatrixID = pipeline.getConstantLocation("M");
 
 		objectAlbedoC = pipeline.getConstantLocation("objectAlbedo");
-		objectAmbientOcclusionC = pipeline.getConstantLocation("objectAO");
+		objectAmbientValueC = pipeline.getConstantLocation("objectAmbientValue");
 
 		lightPositionC = pipeline.getConstantLocation("lightPosition");
 		lightColorC = pipeline.getConstantLocation("lightColor");
@@ -146,7 +146,7 @@ class Mesh {
 		g.setMatrix(mvpID, cameraContoller.mvp);
 		g.setMatrix(modelMatrixID, cameraContoller.model);
 		g.setVector3(objectAlbedoC, objectAlbedo);
-		g.setFloat(objectAmbientOcclusionC, objectAmbientOcclusion);
+		g.setFloat(objectAmbientValueC, objectAmbientValue);
 		g.setVector3(lightPositionC, lightPosition);
 		g.setVector3(lightColorC, lightColor);
 		g.drawIndexedVertices();

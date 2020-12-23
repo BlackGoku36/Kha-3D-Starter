@@ -15,17 +15,17 @@ class CameraController {
 	public var look:FastVector3;
 	public var up:FastVector3;
 
-	var mouse: Input.Mouse;
-	var kb: Input.Keyboard;
+	var mouse = Input.getMouse();
+	var kb = Input.getKeyboard();
 
 	var horizontalAngle = 3.14;
-	var verticalAngle = 0.0;
+	var verticalAngle = -0.52;
 
 	var speed = 0.1;
 	var mouseSpeed = 0.005;
 
 	public function new() {
-		position = new FastVector3(0.0, 0.0, 55.0);
+		position = new FastVector3(0.0, 5.0, 10.0);
 		projection = FastMatrix4.perspectiveProjection(45.0, 4.0 / 3.0, 0.1, 100.0);
 
 		view = FastMatrix4.lookAt(new FastVector3(0, 0, 0), new FastVector3(0, 0, 0), new FastVector3(0, 1, 0));
@@ -36,16 +36,13 @@ class CameraController {
 		mvp = mvp.multmat(projection);
 		mvp = mvp.multmat(view);
 		mvp = mvp.multmat(model);
-
-		mouse = Input.getMouse();
-		kb = Input.getKeyboard();
 	}
 
 	public function update() {
 
 		if (mouse.down(1)) {
-			horizontalAngle += mouseSpeed * mouse.mouseDeltaX * -1;
-			verticalAngle += mouseSpeed * mouse.mouseDeltaY * -1;
+			horizontalAngle += mouseSpeed * mouse.movementX * -1;
+			verticalAngle += mouseSpeed * mouse.movementY * -1;
 		}
 
 		var direction = new FastVector3(Math.cos(verticalAngle) * Math.sin(horizontalAngle), Math.sin(verticalAngle),
@@ -95,7 +92,5 @@ class CameraController {
 		mvp = mvp.multmat(view);
 		mvp = mvp.multmat(model);
 
-		mouse.mouseDeltaX = 0;
-		mouse.mouseDeltaY = 0;
 	}
 }

@@ -23,6 +23,7 @@ class App {
 	public function update() {
 		mesh.update();
 
+		trace('FPS: $fps');
 		if (onEndFrames != null) for (endFrames in onEndFrames) endFrames();
 	}
 
@@ -40,7 +41,6 @@ class App {
 
 		mesh.render(g.g4);
 
-		trace('FPS: $fps');
 		previousTime = currentTime;
 	}
 
