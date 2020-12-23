@@ -124,7 +124,7 @@ class Mesh {
 		}
 		vertexBuffer.unlock();
 
-		indexBuffer = new IndexBuffer(indices.length*2, Usage.StaticUsage);
+		indexBuffer = new IndexBuffer(indices.length, Usage.StaticUsage);
 
 		var iData = indexBuffer.lock();
 		for (i in 0...iData.length) {
